@@ -6,6 +6,7 @@ export default function Form() {
       fname: "James",
       lname: "Iliff",
       role: "teacher",
+      email: "james@hotmail.com",
     },
   ]);
 
@@ -13,6 +14,7 @@ export default function Form() {
     fname: "",
     lname: "",
     role: "",
+    email: "",
   };
 
   const [newFriends, setNewFriends] = useState(newFriendsForm);
@@ -30,6 +32,7 @@ export default function Form() {
       fname: newFriends.fname.trim(),
       lname: newFriends.lname.trim(),
       role: newFriends.role.trim(),
+      email: newFriends.email.trim(),
     };
     setOldFriends([...oldFriends, trimNewFriends]);
     setNewFriends(newFriendsForm);
@@ -62,6 +65,14 @@ export default function Form() {
         id="role"
         type="text"
       />
+      <label htmlFor="email">Email:</label>
+      <input
+        name="email"
+        value={newFriends.email}
+        onChange={handleChange}
+        id="email"
+        type="email"
+      />
       <button type="submit">Submit!</button>
       <h1>Friends List</h1>
 
@@ -72,6 +83,7 @@ export default function Form() {
               <div key={index}>{item.fname}</div>
               <div>{item.lname}</div>
               <div>{item.role}</div>
+              <div>{item.email}</div>
             </div>
           </>
         );
