@@ -5,12 +5,14 @@ export default function Form() {
     {
       fname: "James",
       lname: "Iliff",
+      role: "teacher",
     },
   ]);
 
   const newFriendsForm = {
     fname: "",
     lname: "",
+    role: "",
   };
 
   const [newFriends, setNewFriends] = useState(newFriendsForm);
@@ -27,6 +29,7 @@ export default function Form() {
     const trimNewFriends = {
       fname: newFriends.fname.trim(),
       lname: newFriends.lname.trim(),
+      role: newFriends.role.trim(),
     };
     setOldFriends([...oldFriends, trimNewFriends]);
     setNewFriends(newFriendsForm);
@@ -50,13 +53,21 @@ export default function Form() {
         id="lname"
         type="text"
       />
+      <label htmlFor="role">Role:</label>
+      <input
+        name="role"
+        value={newFriends.role}
+        onChange={handleChange}
+        id="role"
+        type="text"
+      />
       <button type="submit">Submit!</button>
       <h1>Friends List</h1>
 
       {oldFriends.map((item, index) => {
         return (
           <div key={index}>
-            {item.fname} {item.lname}
+            {item.fname} {item.lname} {item.role}
           </div>
         );
       })}
