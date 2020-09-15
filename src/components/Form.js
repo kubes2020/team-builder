@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 
 export default function Form() {
-  const [oldFriends, setOldFriends] = useState({
-    fname: "James",
-    lname: "Iliff",
-  });
+  const [oldFriends, setOldFriends] = useState([
+    {
+      fname: "James",
+      lname: "Iliff",
+    },
+  ]);
 
   const newFriendsForm = {
     fname: "",
@@ -49,6 +51,8 @@ export default function Form() {
         type="text"
       />
       <button type="submit">Submit!</button>
+      <h1>Friends List</h1>
+      <h3>{oldFriends.fname}</h3>
     </form>
   );
 }
