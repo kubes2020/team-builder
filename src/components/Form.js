@@ -52,7 +52,14 @@ export default function Form() {
       />
       <button type="submit">Submit!</button>
       <h1>Friends List</h1>
-      <h3>{oldFriends.fname}</h3>
+
+      {oldFriends.map((item, index) => {
+        return (
+          <div key={index}>
+            {item.fname} {item.lname}
+          </div>
+        );
+      })}
     </form>
   );
 }
