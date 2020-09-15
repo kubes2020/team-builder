@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "../App.css";
 export default function Form() {
   const [oldFriends, setOldFriends] = useState([
     {
@@ -37,6 +37,7 @@ export default function Form() {
 
   return (
     <form onSubmit={submit}>
+      <h3>Add Yourself To The List!</h3>
       <label htmlFor="fname">First Name:</label>
       <input
         name="fname"
@@ -66,9 +67,13 @@ export default function Form() {
 
       {oldFriends.map((item, index) => {
         return (
-          <div key={index}>
-            {item.fname} {item.lname} {item.role}
-          </div>
+          <>
+            <div className="friends-container">
+              <div key={index}>{item.fname}</div>
+              <div>{item.lname}</div>
+              <div>{item.role}</div>
+            </div>
+          </>
         );
       })}
     </form>
