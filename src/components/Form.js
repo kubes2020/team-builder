@@ -1,21 +1,53 @@
 import React, { useState } from "react";
 
 export default function Form() {
-  const [friends, setFriends] = useState({
-    fname: "",
+  const [oldFriends, setOldFriends] = useState({
+    fname: "James",
+    lname: "Iliff",
   });
 
+  const newFriendsForm = {
+    fname: "",
+    lname: "",
+  };
+
+  const [newFriends, setNewFriends] = useState(newFriendsForm);
+
   const handleChange = (e) => {
-    setFriends({ fname: e.target.value });
-    console.log(friends);
+    const { name, value } = e.target;
+    setNewFriends({ ...newFriends, [name]: value });
+    // console.log(e);
+  };
+
+  const submit = (e) => {
+    e.preventDefault();
+
+    const trimNewFriends = {
+      fname: newFriends.fname.trim(),
+      lname: newFriends.lname.trim(),
+    };
+    setOldFriends([...oldFriends, trimNewFriends]);
+    setNewFriends(newFriendsForm);
   };
 
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
+    <form onSubmit={submit}>
       <label htmlFor="fname">First Name:</label>
-      <input onChange={handleChange} id="fname" type="text" />
+      <input
+        name="fname"
+        value={newFriends.fname}
+        onChange={handleChange}
+        id="fname"
+        type="text"
+      />
       <label htmlFor="lname">Last Name:</label>
-      <input onChange={handleChange} id="lname" type="text" />
+      <input
+        name="lname"
+        value={newFriends.lname}
+        onChange={handleChange}
+        id="lname"
+        type="text"
+      />
       <button type="submit">Submit!</button>
     </form>
   );
