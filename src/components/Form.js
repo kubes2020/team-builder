@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../App.css";
-export default function Form() {
+
+export default function Form({ memberToEdit }) {
   const [oldFriends, setOldFriends] = useState([
     {
       fname: "James",
@@ -80,6 +81,7 @@ export default function Form() {
         return (
           <>
             <div className="friends-container">
+              {/* <button onClick={memberToEdit}>Edit</button> */}
               <div key={index}>{item.fname}</div>
               <div>{item.lname}</div>
               <div>{item.role}</div>
